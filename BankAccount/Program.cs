@@ -16,7 +16,7 @@ class BankAccount
 {
     public string AccountNumber { get; }
     public string OwnerName { get; }
-    public int Balance { get; } = 0;
+    public int Balance { get {return amount; } }
     private int amount = 0;
 
     public BankAccount(string accountNumber, string ownerName)
@@ -34,9 +34,9 @@ class BankAccount
     {
         if (amount > 0)
         {
-            this.amount += amount;
+            this.amount = Balance + amount;
 
-            Console.WriteLine($"{amount}원 입금 완료. 잔액: {this.amount}원");
+            Console.WriteLine($"{amount}원 입금 완료. 잔액: {Balance}원");
         }
         else
         {
@@ -50,7 +50,7 @@ class BankAccount
         {
             this.amount -= amount;
 
-            Console.WriteLine($"{amount}원 출금 완료. 잔액: {this.amount}원");
+            Console.WriteLine($"{amount}원 출금 완료. 잔액: {Balance}원");
         }
         else
         {
